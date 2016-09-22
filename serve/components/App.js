@@ -75,7 +75,7 @@ var App = function (_React$Component) {
                         null,
                         _react2.default.createElement(
                             _reactRouter.Link,
-                            { to: "/about/" + this.state.age },
+                            { to: "/foo/about/" + this.state.age },
                             'About'
                         )
                     ),
@@ -84,7 +84,7 @@ var App = function (_React$Component) {
                         null,
                         _react2.default.createElement(
                             _reactRouter.Link,
-                            { to: '/features' },
+                            { to: '/foo/features' },
                             'Features'
                         )
                     )

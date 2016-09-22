@@ -36,18 +36,13 @@ var ERoute = _express2.default.Router();
 var app = new _express2.default();
 
 
-var Home = ERoute.get('*', function (req, res) {
-
-  app.get('/like', function (req, res) {
-    res.send('zdssd');
-  });
-
+var Home = ERoute.get('/foo/*', function (req, res) {
   (0, _reactRouter.match)({ routes: _route2.default, location: req.url }, function (err, redirect, props) {
     console.log('=============' + req.url + '==========');
     if (err) {
       res.status(500).send(error.message);
     } else if (redirect) {
-      res.redirect(302, redirectLocation.pathname + redirectLocation.search);
+      res.redirect(302, redirect.pathname + redirect.search);
     } else if (props) {
       // var initialProps = {};
       // initialProps['name'] = 'achyut';
@@ -65,6 +60,7 @@ var Home = ERoute.get('*', function (req, res) {
       ));
 
       // for meta tags
+
       var meta = _reactDocumentMeta2.default.renderAsHTML();
 
       res.render('index.ejs', { x: x, initstate: initstate, meta: meta });
@@ -73,8 +69,11 @@ var Home = ERoute.get('*', function (req, res) {
     }
   });
 });
+var Bar = ERoute.get('/bar/*', function (req, res) {
+  res.end('dsdadad');
+});
 
-app.use(_express2.default.static(_path2.default.join(__dirname, '../public'))).use(Home);
+app.use(_express2.default.static(_path2.default.join(__dirname, '../public'))).use(Home).use(Bar);
 
 app.listen(3000, function (req, res) {
   console.log('server is running');

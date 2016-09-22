@@ -27,36 +27,30 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Home = function (_React$Component) {
   _inherits(Home, _React$Component);
 
-  function Home() {
+  function Home(props, context) {
     _classCallCheck(this, Home);
 
-    return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props, context));
+
+    _this.state = {
+      name: context.data.name,
+      age: context.data.age,
+      address: context.data.address
+    };
+    return _this;
   }
+
+  //  componentDidMount(){
+  //      this.setState({
+  //        name  :this.props.name,
+  //        age : this.props.age
+  //      });
+  //  }
 
   _createClass(Home, [{
     key: 'btnClickd',
-
-
-    // constructor (props, context) {
-    //
-    //     super(props, context);
-    //     this.state = {
-    //         name: context.data.name,
-    //         age: context.data.age,
-    //         address : context.data.address
-    //     };
-    // }
-
-
-    //  componentDidMount(){
-    //      this.setState({
-    //        name  :this.props.name,
-    //        age : this.props.age
-    //      });
-    //  }
-
-    value: function btnClickd() {
-      alert('hello world');
+    value: function btnClickd(data) {
+      alert('hello ' + data);
     }
   }, {
     key: 'render',
@@ -77,8 +71,14 @@ var Home = function (_React$Component) {
         null,
         _react2.default.createElement(_reactDocumentMeta2.default, meta),
         _react2.default.createElement(
+          'p',
+          null,
+          'Hello   ',
+          this.state.name
+        ),
+        _react2.default.createElement(
           'button',
-          { onClick: this.btnClickd.bind(this) },
+          { onClick: this.btnClickd.bind(this, this.state.name) },
           'Click Me Here '
         )
       );
@@ -90,3 +90,6 @@ var Home = function (_React$Component) {
 
 exports.default = Home;
 ;
+Home.contextTypes = {
+  data: _react2.default.PropTypes.object.isRequired
+};

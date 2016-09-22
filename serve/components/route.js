@@ -31,8 +31,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Components
 exports.default = _react2.default.createElement(
   _reactRouter.Route,
-  { path: '/', component: _App2.default },
-  _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
-  _react2.default.createElement(_reactRouter.Route, { path: 'about/:index', component: _About2.default }),
-  _react2.default.createElement(_reactRouter.Route, { path: 'features', component: _Features2.default })
+  { path: '/foo/', component: _App2.default },
+  _react2.default.createElement(_reactRouter.IndexRoute, { path: '/foo/', component: _Home2.default }),
+  _react2.default.createElement(_reactRouter.Route, { path: '/foo/about/:index', component: _About2.default }),
+  _react2.default.createElement(_reactRouter.Route, { path: '/foo/features', component: _Features2.default })
 );
